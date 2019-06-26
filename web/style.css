@@ -1,0 +1,192 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+background: linear-gradient(90deg, rgba(252,255,180,1) 0%, rgba(104,214,255,1) 100%);
+font-family: 'Open Sans', sans-serif;
+}
+
+input[type='text'], input[type='number'], select { font-family: 'Open Sans', sans-serif;}
+
+#sheetHeaderTitle {margin-left: 20px;}
+
+.hideIt { visibility: hidden;}
+
+.numberInput {text-align: center;}
+
+#shopList { margin-left: 20px;}
+
+#selectDate {
+  margin-left: 20px;
+  width: 169px;
+}
+
+span { text-align: center;}
+
+label { text-align: center;}
+
+h3, h4 { text-align: center;}
+
+#sheetHeaderContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: space-between;
+  align-items: baseline;
+  margin: 10px 20px 10px 20px;
+}
+
+#navigationMenu li { list-style: none; }
+
+.twoColumnLayout {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.sheetBodyContainer {
+  display: grid;
+  margin: 10px 20px 10px 20px;
+  background-color: rgba(255, 255, 224, 0.2);
+  justify-content: center;
+  padding: 10px 0 10px 0;
+}
+
+#morningCount {
+  display: grid;
+  grid-template-columns: 9em 5em 4em 5em 4em;
+}
+
+.morningCountMessage {
+  width: 28rem;
+  font-size: 13px;
+  padding-top: 0.5rem;
+}
+
+.morningCountLabel { font-size: 0.85rem; }
+
+#eveningCount {
+  display: grid;
+  grid-template-columns: 9em 5em 4em 5em 4em;
+}
+
+.eveningCountPDQTotal {
+  display: grid;
+  grid-template: 9em 5em 4em;
+}
+
+#evenCountCurTotalPDQCash {
+  width: 6.5rem;
+  margin-left: -20px;
+}
+
+#evenCountCurTotalPDQVouch {
+  width: 6.5rem;
+  margin-left: -20px;
+}
+
+.span2 {
+  grid-column: span 2;
+}
+
+.numberInputWidth {
+  width: 6.5rem;
+}
+
+.countQuantityLabel, 
+.countCashLabel, 
+.countVouchersLabel { font-size: 0.85rem; }
+.countHeadingLabel { font-size: 1rem; }
+
+.sheetBodyContainer p { text-align: center; }
+.comments { display: grid; }
+.commentsLabel { font-size: 18.72px; }
+.commentsTextArea {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px;
+  width: 21rem;
+  margin: 0 auto;
+}
+.commentsTextArea { resize: none; }
+
+.sheetBodyContainer > #tillCheck1 {
+  display: grid;
+  grid-template-columns: 150px 100px 100px;
+  grid-row-gap: 5px;
+  grid-template-rows: 28px 28px 28px 44px 28px;
+}
+
+.sheetBodyContainer > .tillCheck2 {
+  display: grid;
+  grid-template-columns: 150px 100px 100px;
+  grid-row-gap: 5px;
+  padding-bottom: 5px
+}
+
+#figureFromZReport {
+  display: grid;
+  grid-template-columns: 150px 75px 75px 75px;
+  margin-left: 5px;
+  padding: 0px 4px;
+}
+
+.payouts > input { width: 5rem; }
+
+.sheetBodyContainer > .transfers {
+  display: grid;
+  grid-template-columns: 100px 100px 50px 100px 100px 75px 45px;
+  padding-bottom: 20px;
+  grid-row-gap: 5px;
+}
+
+.sheetBodyContainer > .expenses {
+  display: grid;
+  grid-template-columns: 350px 100px;
+  padding-bottom: 20px;
+  grid-row-gap: 5px;
+  margin: 0 auto;
+}
+
+.additionalInfo {
+  width: 50%;
+  font-size: 0.8rem;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.salesOverRing{
+  display: grid;
+  grid-template-columns: 150px 75px 75px;
+  padding-bottom: 20px;
+  grid-row-gap: 5px;
+}
+
+.otherOverRing{
+  display: grid;
+  grid-template-columns: 150px 75px 75px;
+  padding-bottom: 20px;
+  grid-row-gap: 5px;
+}
+
+.zReportInfo {
+  grid-row: 5 / 7;
+  padding-bottom: 5px;
+}
+
+input:focus { background-color: rgba(253, 255, 180, 1); }
+
+input#pdqCurTotal::placeholder {
+  font-size: 0.7rem;
+  color: crimson;
+}
+
+input#pdqCurTotal { width: 6.5rem; }
+
+input#vouchClaimed::placeholder {
+  font-size: 0.7rem;
+  color: crimson;
+}
+
+input#vouchClaimed { width: 6.5rem; }
