@@ -4,6 +4,13 @@ require_once("./inc/mysql.inc.php");
 
 session_start();
 
+/*
+SimpleQueryA($adb, $sql, &$arr)
+Execute $sql query over connection $adb and return results as an array in $arr.
+$adb must be pre-initialized and connection opened before calling the function.
+No checks for validity of $sql are made.
+Array $arr must be pre-initialized.
+*/
 function SimpleQueryA($adb, $sql, &$arr) {
     if (!$adb->Query($sql)) $adb->Kill();
     $arr = array(); // reinitialize array to make sure it's empty
@@ -13,7 +20,14 @@ function SimpleQueryA($adb, $sql, &$arr) {
     return $arr;
 }
 
-function PrintOptions($arr, $id_field, ...$name_fields) {
+/*
+OutputHTMLOptionTags($arr, $id_field, ...$name_fields)
+Outputs HTML <option> tags intended for <select> tag.
+Expects an array of arrays representing a DB table as input as $arr, $id_field string for the value
+of ID field in <option> tag, and one ore more $name_fields strings for putting together display value.
+The display name is a concatenation of $name_fields with spaces in between.
+*/
+function OutputHTMLOptionTags($arr, $id_field, ...$name_fields) {
     for ($i = 0; $i < count($arr); $i++) {
         $name = "";
         for ($j = 0; $j < count($name_fields); $j++) {
@@ -25,9 +39,11 @@ function PrintOptions($arr, $id_field, ...$name_fields) {
     }
 }
 
+// Initialize and open main DB connection
 $db = new CMySQL;
 if (!$db->Open()) $db->Kill();
 
+// Get locations
 $q = "SELECT id, loc_name, loc_address, loc_floor
       FROM locations
       ORDER BY loc_name, loc_floor;
@@ -61,9 +77,7 @@ SimpleQueryA($db, $q, $locations);
             <input list="shops" name="shops" id="shopList" placeholder="Shop Name">
               <datalist id="shops">
                 <?
-                    while ($r = $db->Row()) {
-                        echo '<option value="'.$r->name.'" id="'.$r->id.'">';
-                    }
+                    OutputHTMLOptionTags($locations, "id", "loc_name", "loc_floor");
                 ?>
               </datalist>
               <input type="date" name="selectDate" id="selectDate">
