@@ -27,15 +27,19 @@ Expects an array of arrays representing a DB table as input as $arr, $id_field s
 of ID field in <option> tag, and one ore more $name_fields strings for putting together display value.
 The display name is a concatenation of $name_fields with spaces in between.
 */
-function OutputHTMLOptionTags($arr, $id_field, ...$name_fields) {
+function OutputHTMLOptionTags($arr, $id_field, $selected_id, ...$name_fields) {
     for ($i = 0; $i < count($arr); $i++) {
         $name = "";
         for ($j = 0; $j < count($name_fields); $j++) {
             if ($name)
                 $name .= " ";
             $name .= $arr[$i][$name_fields[$j]];
-        }
-        echo '<option value="'.$name.'" id="'.$arr[$i][$id_field].'">'.$name.'</option>';
+        }        
+        if ($selected_id == $arr[$i][$id_field])
+            $selected = " selected";
+        else
+            $selected = "";
+        echo '<option value="'.$name.'" id="'.$arr[$i][$id_field].'"'.$selected.'>'.$name.'</option>';
     }
 }
 
@@ -77,7 +81,7 @@ SimpleQueryA($db, $q, $locations);
             <input list="shops" name="shops" id="shopList" placeholder="Shop Name">
               <datalist id="shops">
                 <?
-                    OutputHTMLOptionTags($locations, "id", "loc_name", "loc_floor");
+                    OutputHTMLOptionTags($locations, "id", 2, "loc_name", "loc_floor");
                 ?>
               </datalist>
               <input type="date" name="selectDate" id="selectDate">
